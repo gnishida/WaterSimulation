@@ -18,8 +18,8 @@ void main()
 		height += amplitude[i] * sin(dr * frequency[i] - t);
 
 		if (dr > 0.0) {
-			n.x -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr * 0.033;
-			n.y -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr * 0.033;
+			n.x -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr * 0.1;
+			n.y -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr * 0.1;
 		}
 	}
 	n = normalize(n);
