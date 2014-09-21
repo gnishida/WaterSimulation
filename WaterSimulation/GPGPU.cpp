@@ -47,6 +47,7 @@ GPGPU::GPGPU(int w, int h) : _initialized(0), _width(w), _height(h)
 	_centerLoc = glGetUniformLocation(_programId, "center");
 	_frequencyLoc = glGetUniformLocation(_programId, "frequency");
 	_amplitudeLoc = glGetUniformLocation(_programId, "amplitude");
+	_lightDirLoc = glGetUniformLocation(_programId, "lightDir");
 }
 
 void GPGPU::update(float t)
@@ -67,9 +68,11 @@ void GPGPU::update(float t)
 	float center[] = {0.3, 0.3, 0.8, 0.7, 0.4, 0.9};
 	float frequency[] = {100.0, 80.0, 50.0};
 	float amplitude[] = {0.5, 0.4, 0.1};
+	float lightDir[] = {0.0, 0.0, 1.0};
 	glUniform2fv(_centerLoc, 3, center);
 	glUniform1fv(_frequencyLoc, 3, frequency);
 	glUniform1fv(_amplitudeLoc, 3, amplitude);
+	glUniform3fv(_lightDirLoc, 1, lightDir);
 	glUniform1f(_tLoc, t);
             
 	// By drawing a quad, the fragment shader will be called for each pixel.

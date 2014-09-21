@@ -24,6 +24,7 @@ private:
 	GLuint _centerLoc;
 	GLuint _frequencyLoc;
 	GLuint _amplitudeLoc;
+	GLuint _lightDirLoc;
     
     GLuint _textureId;		// The texture ID used to store data array
     GLuint _programId;		// the program ID
