@@ -23,7 +23,7 @@ void main()
 		}
 	}
 
-	vec2 land_dist = gl_TexCoord[0] - vec2(0.5, 0.5);
+	vec2 land_dist = gl_TexCoord[0].xy - vec2(0.5, 0.5);
 	float sigma = 0.3;
 	float land_height = 30.0 * exp(-dot(land_dist, land_dist) * 0.5 / sigma / sigma) - 20.0;
 
