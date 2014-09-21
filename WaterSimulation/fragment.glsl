@@ -18,8 +18,8 @@ void main()
 		height += amplitude[i] * sin(dr * frequency[i] - t);
 
 		if (dr > 0.0) {
-			n.x -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr / 20.0;
-			n.y -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr / 20.0;
+			n.x -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr * 0.033;
+			n.y -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr * 0.033;
 		}
 	}
 	n = normalize(n);
@@ -27,6 +27,5 @@ void main()
 	vec3 l = normalize(lightDir);
 
 	float diffuse = max(0.0, dot(n, l));
-	//gl_FragColor = vec4(l, 1.0);
-	gl_FragColor = vec4(diffuse * 0.8 + 0.2, diffuse * 0.8 + 0.2, 1.0, 1.0);
+	gl_FragColor = vec4(diffuse * 0.9 + 0.1, diffuse * 0.9 + 0.1, 1.0, 1.0);
 }
