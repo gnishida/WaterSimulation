@@ -65,7 +65,7 @@ void GPGPU::update(float t)
     // Set the uniform variables
     glUniform1i(_texUnitLoc, 0);
 	float center[] = {0.3, 0.3, 0.8, 0.7, 0.4, 0.9};
-	float frequency[] = {10.0, 8.0, 5.0};
+	float frequency[] = {100.0, 80.0, 50.0};
 	float amplitude[] = {0.5, 0.4, 0.1};
 	glUniform2fv(_centerLoc, 3, center);
 	glUniform1fv(_frequencyLoc, 3, frequency);

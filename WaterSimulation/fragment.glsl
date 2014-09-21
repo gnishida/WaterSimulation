@@ -32,9 +32,20 @@ void main()
 
 	//gl_FragColor = vec4(U + dU, 0.0, V + dV, 1.0);
 	float height = 0.0;
+	vec3 n = vec3(0, 0, 1);
 	for (int i = 0; i < 3; ++i) {
-		float r = sqrt((texCoord.x - center[i].x) * (texCoord.x - center[i].x) + (texCoord.y - center[i].y) * (texCoord.y - center[i].y));
-		height += amplitude[i] * sin(r * frequency[i] - t);
+		float dx = abs(texCoord.x - center[i].x);
+		float dy = abs(texCoord.y - center[i].y);
+		float dr = sqrt(dx * dx + dy * dy);
+		height += amplitude[i] * sin(dr * frequency[i] - t);
+		n.x += amplitude[i] * cos(dx * frequency[i] - t);
+		n.y += amplitude[i] * cos(dy * frequency[i] - t);
 	}
+	n = normalize(n);
+	vec3 lightDir = vec3(1, 1, 1);
+	lightDir = normalize(lightDir);
+	float diffuse = max(0, dot(n, lightDir));
+	//gl_FragColor = diffuse * vec4(1.0, 1.0, 1.0, 1.0);
+	//gl_FragColor = vec4(diffuse, diffuse, 1.0, 1.0);
 	gl_FragColor = vec4((height + 1.0) * 0.5, (height + 1.0) * 0.5, 1.0, 1.0);
 }
