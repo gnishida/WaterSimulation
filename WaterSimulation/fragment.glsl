@@ -12,14 +12,14 @@ void main()
 	float height = 0.0;
 	vec3 n = vec3(0, 0, 1);
 	for (int i = 0; i < 3; ++i) {
-		float dx = abs(texCoord.x - center[i].x);
-		float dy = abs(texCoord.y - center[i].y);
+		float dx = texCoord.x - center[i].x;
+		float dy = texCoord.y - center[i].y;
 		float dr = sqrt(dx * dx + dy * dy);
 		height += amplitude[i] * sin(dr * frequency[i] - t);
 
 		if (dr > 0.0) {
-			n.x += amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr / 30.0;
-			n.y += amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr / 30.0;
+			n.x -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dx / dr / 20.0;
+			n.y -= amplitude[i] * frequency[i] * cos(dr * frequency[i] - t) * dy / dr / 20.0;
 		}
 	}
 	n = normalize(n);
@@ -28,5 +28,5 @@ void main()
 
 	float diffuse = max(0.0, dot(n, l));
 	//gl_FragColor = vec4(l, 1.0);
-	gl_FragColor = vec4(diffuse, diffuse, 1.0, 1.0);
+	gl_FragColor = vec4(diffuse * 0.8 + 0.2, diffuse * 0.8 + 0.2, 1.0, 1.0);
 }
