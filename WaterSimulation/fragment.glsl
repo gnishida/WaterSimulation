@@ -1,6 +1,7 @@
 uniform vec2 center[3];
 uniform float frequency[3];
 uniform float amplitude[3];
+uniform vec2 island;
 uniform vec3 lightDir;
 uniform float t;
 uniform sampler2D texUnit;
@@ -23,7 +24,7 @@ void main()
 		}
 	}
 
-	vec2 land_dist = gl_TexCoord[0].xy - vec2(0.5, 0.5);
+	vec2 land_dist = gl_TexCoord[0].xy - island;
 	float sigma = 0.3;
 	float land_height = 30.0 * exp(-dot(land_dist, land_dist) * 0.5 / sigma / sigma) - 20.0;
 

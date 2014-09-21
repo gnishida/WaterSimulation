@@ -24,6 +24,7 @@ private:
 	GLuint _centerLoc;
 	GLuint _frequencyLoc;
 	GLuint _amplitudeLoc;
+	GLuint _islandLoc;
 	GLuint _lightDirLoc;
     
     GLuint _textureId;		// The texture ID used to store data array
